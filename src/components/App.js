@@ -25,6 +25,11 @@ export default function App() {
   }, [contacts]);
 
   const addContact = (name, number) => {
+    if (contacts.some(contact => contact.name === name)) {
+      alert(`${name} is already in Contacts`);
+      return;
+    }
+
     setContacts(contacts => {
       const contact = {
         id: uuid4(),
